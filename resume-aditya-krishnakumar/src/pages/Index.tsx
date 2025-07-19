@@ -1,36 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState } from "react";
 
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { gsap } from "gsap";
+import { useGSAP } from '@gsap/react';
 
-import Navigation from '../components/Navigation';
-// import HeroSection from '../components/sections/HeroSection';
-// import AboutSection from '../components/sections/AboutSection';
-// import ExperienceSection from '../components/sections/ExperienceSection';
-// import ContactSection from '../components/sections/ContactSection';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+import Navigation from "../components/Navigation";
+import HeroSection from "../components/sections/HeroSection";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
 
-  useEffect(() => {
-    // Smooth scrolling setup
-    const sections = ['hero', 'about', 'experience', 'contact'];
-    
+  useGSAP(() => {
+    const sections = ["hero", "about", "experience", "contact"];
+
     sections.forEach((section) => {
       ScrollTrigger.create({
         trigger: `#${section}`,
-        start: 'top 60%',
-        end: 'bottom 40%',
+        start: "top 60%",
+        end: "bottom 40%",
         onEnter: () => setActiveSection(section),
         onEnterBack: () => setActiveSection(section),
       });
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -40,7 +38,7 @@ const Index = () => {
       gsap.to(window, {
         duration: 1.5,
         scrollTo: { y: element, offsetY: 0 },
-        ease: "power3.inOut"
+        ease: "power3.inOut",
       });
     }
   };
@@ -48,24 +46,12 @@ const Index = () => {
   return (
     <div className="relative">
       <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
-      
-      {/* <main className="relative">
+
+      <main className="relative">
         <div id="hero">
           <HeroSection />
         </div>
-        
-        <div id="about">
-          <AboutSection />
-        </div>
-        
-        <div id="experience">
-          <ExperienceSection />
-        </div>
-        
-        <div id="contact">
-          <ContactSection />
-        </div>
-      </main> */}
+      </main>
     </div>
   );
 };
