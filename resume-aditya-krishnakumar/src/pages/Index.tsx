@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 import { gsap } from "gsap";
-import { useGSAP } from '@gsap/react';
+import { useGSAP } from "@gsap/react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/sections/HeroSection";
+import AboutSection from "../components/sections/AboutSection";
+import ExperienceSection from "../components/sections/ExperienceSection";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
@@ -50,6 +52,14 @@ const Index = () => {
       <main className="relative">
         <div id="hero">
           <HeroSection />
+        </div>
+
+        <div id="about">
+          <AboutSection />
+        </div>
+
+        <div id="experience">
+          <ExperienceSection />
         </div>
       </main>
     </div>
