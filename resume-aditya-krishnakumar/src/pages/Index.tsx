@@ -10,6 +10,7 @@ import Navigation from "../components/Navigation";
 import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/AboutSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
+import ContactSection from "../components/sections/ContactSection";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
 
@@ -60,6 +61,10 @@ const Index = () => {
 
         <div id="experience">
           <ExperienceSection />
+        </div>
+
+        <div id="contact">
+          <ContactSection />
         </div>
       </main>
     </div>
