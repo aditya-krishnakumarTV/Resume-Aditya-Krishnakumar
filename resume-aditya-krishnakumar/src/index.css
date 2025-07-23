@@ -12,7 +12,7 @@
   --color-popover: oklch(0.1405 0.0044 285.82);
   --color-popover-foreground: oklch(0.9848 0 0);
 
-  --color-primary: oklch(0.6941 0.2083 344.93);
+  --color-primary: oklch(0.6504 0.282 316.8);
   --color-primary-foreground: oklch(0.1405 0.0044 285.82);
 
   --color-secondary: oklch(0.2741 0.0055 286.03);
@@ -21,7 +21,7 @@
   --color-muted: oklch(0.2741 0.0055 286.03);
   --color-muted-foreground: oklch(0.7119 0.0129 286.07);
 
-  --color-accent: oklch(0.7363 0.158372 235.9784);
+  --color-accent: oklch(0.5858 0.2275 19.43);
   --color-accent-foreground: oklch(0.1405 0.0044 285.82);
 
   --color-destructive: oklch(0.6368 0.2078 25.33);
@@ -29,11 +29,11 @@
 
   --color-border: oklch(0.2741 0.0055 286.03);
   --color-input: oklch(0.2741 0.0055 286.03);
-  --color-ring: oklch(0.6941 0.2083 344.93);
+  --color-ring: oklch(0.6504 0.282 316.8);
 
-  --color-neon-pink: oklch(0.6941 0.2083 344.93);
-  --color-neon-cyan: oklch(0.7363 0.158372 235.9784);
-  --color-neon-purple: oklch(0.5835 0.244 302);
+  --color-neon-violet: oklch(0.6504 0.282 316.8);
+  --color-neon-red: oklch(0.5858 0.2275 19.43);
+  --color-neon-purple: oklch(0.4835 0.244 302);
   --color-neon-green: oklch(0.8664 0.294827 142.4953);
 
   --color-dark-bg: oklch(0.1405 0.0044 285.82);
@@ -49,6 +49,11 @@
     --radius: 0.5rem;
 
     /* Gradients, Shadows, Transitions (remain as is, as they are custom properties for direct use) */
+    --gradient-cyber: linear-gradient(
+      90deg,
+      var(--color-neon-red),
+      var(--color-neon-violet)
+    );
     --gradient-dark: linear-gradient(
       180deg,
       hsl(240, 15%, 2%) 0%,
@@ -61,8 +66,8 @@
     );
 
     /* Shadows */
-    --shadow-neon: 0 0 20px hsl(322, 84%, 65%, 0.5);
-    --shadow-cyan: 0 0 30px hsl(197, 100%, 50%, 0.4);
+    --shadow-neon-violet: 0 0 30px hsla(279, 65%, 69%, 0.475);
+    --shadow-neon-red: 0 0 30px hsl(353.52, 86%, 61%, 0.4);
     --shadow-purple: 0 0 25px hsl(270, 85%, 60%, 0.4);
 
     /* Transitions */
@@ -112,8 +117,8 @@
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(
       180deg,
-      rgba(237, 26, 26, 0.771),
-      rgb(91, 34, 135)
+      var(--color-neon-red),
+      var(--color-neon-violet)
     );
     border-radius: 4px;
   }
@@ -186,12 +191,12 @@
     background: var(--gradient-dark);
   }
 
-  .shadow-neon {
-    box-shadow: var(--shadow-neon);
+  .shadow-neon-violet {
+    box-shadow: var(--shadow-neon-violet);
   }
 
-  .shadow-cyan {
-    box-shadow: var(--shadow-cyan);
+  .shadow-neon-red {
+    box-shadow: var(--shadow-neon-red);
   }
 
   .shadow-purple {

@@ -52,7 +52,7 @@ const Index = () => {
 
       <main className="relative">
         <div id="hero">
-          <HeroSection />
+          <HeroSection onNavigate={handleNavigate}  />
         </div>
 
         <div id="about">

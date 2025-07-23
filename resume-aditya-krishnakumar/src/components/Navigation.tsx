@@ -29,7 +29,7 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
       className="fixed top-0 left-0 right-0 z-50 p-6"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="backdrop-blur-md bg-card/20 border border-neon-pink/30 rounded-lg px-6 py-3">
+        <div className="backdrop-blur-md bg-card/20 border border-muted-foreground/40 rounded-lg px-6 py-3">
           <div className="flex items-center justify-between">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -42,13 +42,13 @@ const Navigation = ({ activeSection, onNavigate }: NavigationProps) => {
               {sections.map((section) => (
                 <motion.button
                   key={section.id}
-                  whileHover={{ scale: 1.1, color: "hsl(var(--neon-pink))" }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onNavigate(section.id)}
                   className={`font-rajdhani font-medium transition-cyber ${
                     activeSection === section.id
                       ? "text-primary text-neon"
-                      : "text-muted-foreground hover:text-accent"
+                      : "text-muted-foreground hover:text-neon-violet"
                   }`}
                 >
                   {section.label}

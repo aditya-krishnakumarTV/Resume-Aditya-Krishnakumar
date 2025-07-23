@@ -1,25 +1,26 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { motion } from "framer-motion";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 import { Phone, Mail, MapPin, Github, Linkedin } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const availableRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const section = sectionRef.current;
-    const form = formRef.current;
     const contact = contactRef.current;
+    const availability = availableRef.current;
 
-    if (section && form && contact) {
+    if (section && availability && contact) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -30,11 +31,11 @@ const ContactSection = () => {
       });
 
       tl.fromTo(
-        form,
+        contact,
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
       ).fromTo(
-        contact,
+        availability,
         { x: 100, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
         "-=0.5"
@@ -65,13 +66,13 @@ const ContactSection = () => {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Connect on LinkedIn",
-      href: "https://linkedin.com/in/aditya-krishnakumar",
+      href: "https://www.linkedin.com/in/aditya-krishnakumar-335530221/",
     },
     {
       icon: Github,
       label: "GitHub",
       value: "View GitHub Profile",
-      href: "https://github.com/aditya-krishnakumar",
+      href: "https://github.com/aditya-krishnakumarTV",
     },
   ];
 
@@ -91,8 +92,8 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div
+        <div className="gap-12">
+          {/* <div
             ref={formRef}
             className="backdrop-blur-md bg-card/10 border border-primary/30 rounded-lg p-8 scanlines relative"
           >
@@ -155,14 +156,17 @@ const ContactSection = () => {
                 TRANSMIT MESSAGE
               </motion.button>
             </form>
-          </div>
+          </div> */}
 
-          <div ref={contactRef} className="space-y-6">
-            <div className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8">
+          <div className="space-y-6">
+            <div
+              ref={contactRef}
+              className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8"
+            >
               <h3 className="font-orbitron text-2xl font-bold text-accent mb-6">
                 CONTACT INFO
               </h3>
-              <div className="space-y-6">
+              <div className="grid lg:grid-cols-2 space-y-6 gap-4">
                 {contactInfo.map((item, index) => (
                   <motion.div
                     key={index}
@@ -200,7 +204,10 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="backdrop-blur-md bg-card/10 border border-purple-500/30 rounded-lg p-8">
+            <div
+              ref={availableRef}
+              className="backdrop-blur-md bg-card/10 border border-purple-500/30 rounded-lg p-8"
+            >
               <h3 className="font-orbitron text-xl font-bold text-purple-400 mb-4">
                 AVAILABILITY
               </h3>
@@ -211,7 +218,7 @@ const ContactSection = () => {
                 </span>
               </div>
               <p className="text-muted-foreground text-sm">
-                Open to freelance projects, consulting, and full-time positions.
+                Open to freelance projects and full-time positions.
                 Let's discuss how we can work together!
               </p>
             </div>

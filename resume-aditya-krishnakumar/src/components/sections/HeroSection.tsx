@@ -1,17 +1,25 @@
-import { CSSProperties, useEffect, useRef } from "react";
+import { CSSProperties, useRef } from "react";
 
 import { motion } from "framer-motion";
+
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
-import profileImage from "../../assets/IMG_3789.JPG";
+import profileImage from "../../assets/Aditya Krishnakumar 2024.JPG";
 
-const HeroSection = () => {
+gsap.registerPlugin(useGSAP);
+
+interface NavigationProps {
+  onNavigate: (section: string) => void;
+}
+
+const HeroSection = ({ onNavigate }: NavigationProps) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const tl = gsap.timeline({ delay: 0.5 });
 
     tl.fromTo(
@@ -62,7 +70,19 @@ const HeroSection = () => {
       {[...Array(20)].map((_, i) => (
         <div
           key={i}
-          className="particle absolute w-2 h-2 bg-black rounded-full opacity-30"
+          className="particle absolute w-2 h-2 bg-accent rounded-full opacity-40"
+          style={
+            {
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            } as CSSProperties
+          }
+        />
+      ))}
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          className="particle absolute w-2 h-2 bg-primary rounded-full opacity-40"
           style={
             {
               left: `${Math.random() * 100}%`,
@@ -81,41 +101,45 @@ const HeroSection = () => {
         >
           <h1
             ref={titleRef}
-            className="font-orbitron text-5xl md:text-7xl font-black mb-6"
+            className="font-orbitron text-5xl md:text-6xl text-white font-medium mb-6 glitch"
             data-text="ADITYA KRISHNAKUMAR"
           >
-            <span className="bg-cyber-gradient bg-clip-text">
-              ADITYA
-            </span>
-            <br />
-            <span className="text-foreground">KRISHNAKUMAR</span>
+            <span>ADITYA KRISHNAKUMAR</span>
           </h1>
 
           <p
             ref={subtitleRef}
-            className="font-rajdhani text-xl md:text-2xl text-accent mb-8 font-medium"
+            className="font-rajdhani text-xl md:text-2xl text-primary mb-8 font-medium"
           >
             &gt; UI DEVELOPER_
           </p>
 
           <div ref={ctaRef} className="space-y-4">
-            <p className="text-muted-foreground text-lg max-w-md">
+            <p className="text-gray-200 text-lg max-w-md">
               A results-driven UI Developer with over 3 years of experience.
               Passionate about creating impactful and innovative solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "var(--shadow-neon)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "var(--shadow-neon-violet)",
+                }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => onNavigate("experience")}
                 className="px-8 py-3 bg-primary text-primary-foreground font-rajdhani font-bold rounded-lg border border-primary border-neon transition-cyber"
               >
                 VIEW WORK
               </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "var(--shadow-cyan)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "var(--shadow-neon-red)",
+                }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => onNavigate("contact")}
                 className="px-8 py-3 border border-accent text-accent font-rajdhani font-bold rounded-lg hover:bg-accent/10 transition-cyber"
               >
                 CONTACT ME
@@ -131,16 +155,16 @@ const HeroSection = () => {
           className="flex justify-center lg:justify-end"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-white rounded-full blur-xl opacity-20 profile-float"></div>
+            <div className="absolute inset-0 bg-cyber-gradient rounded-full blur-xl opacity-50 profile-float"></div>
             <img
               src={profileImage}
               alt="Aditya Krishnakumar"
-              className="profile-float relative z-10 w-80 h-90 object-cover rounded-full border-4 border-black shadow-black"
+              className="profile-float relative z-10 w-80 h-90 object-cover rounded-full border-4 border-accent shadow-accent"
             />
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-black rounded-full opacity-50"></div>
-            <div className="absolute -bottom-8 -left-8 w-16 h-16 border-2 border-black rounded-full opacity-30"></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 border-2 border-accent rounded-full opacity-60"></div>
+            <div className="absolute -bottom-8 -left-8 w-16 h-16 border-2 border-primary rounded-full opacity-40"></div>
           </div>
         </motion.div>
       </div>
@@ -151,8 +175,8 @@ const HeroSection = () => {
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
-        <div className="w-6 h-10 border-2 border-black rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-black rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
         </div>
       </motion.div>
     </section>
