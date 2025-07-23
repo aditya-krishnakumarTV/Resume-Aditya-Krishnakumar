@@ -2,55 +2,53 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-background: oklch(0.1405 0.0044 285.82);
+  --color-foreground: oklch(0.9848 0 0);
+
+  --color-card: oklch(0.1405 0.0044 285.82);
+  --color-card-foreground: oklch(0.9848 0 0);
+
+  --color-popover: oklch(0.1405 0.0044 285.82);
+  --color-popover-foreground: oklch(0.9848 0 0);
+
+  --color-primary: oklch(0.6941 0.2083 344.93);
+  --color-primary-foreground: oklch(0.1405 0.0044 285.82);
+
+  --color-secondary: oklch(0.2741 0.0055 286.03);
+  --color-secondary-foreground: oklch(0.9848 0 0);
+
+  --color-muted: oklch(0.2741 0.0055 286.03);
+  --color-muted-foreground: oklch(0.7119 0.0129 286.07);
+
+  --color-accent: oklch(0.7363 0.158372 235.9784);
+  --color-accent-foreground: oklch(0.1405 0.0044 285.82);
+
+  --color-destructive: oklch(0.6368 0.2078 25.33);
+  --color-destructive-foreground: oklch(0.9848 0 0);
+
+  --color-border: oklch(0.2741 0.0055 286.03);
+  --color-input: oklch(0.2741 0.0055 286.03);
+  --color-ring: oklch(0.6941 0.2083 344.93);
+
+  --color-neon-pink: oklch(0.6941 0.2083 344.93);
+  --color-neon-cyan: oklch(0.7363 0.158372 235.9784);
+  --color-neon-purple: oklch(0.5835 0.244 302);
+  --color-neon-green: oklch(0.8664 0.294827 142.4953);
+
+  --color-dark-bg: oklch(0.1405 0.0044 285.82);
+  --color-darker-bg: oklch(0.1108 0.0052 285.51);
+  --color-grid-color: oklch(0.313 0.009 285.87);
+
+  --font-orbitron: "Orbitron", monospace;
+  --font-rajdhani: "Rajdhani", sans-serif;
+}
+
 @layer base {
   :root {
-    /* Retro Cyber Color Palette (using HSL for flexibility in light/dark mode) */
-    --background: 240 10% 3.9%; /* Example HSL values */
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 322 84% 65%;
-    --primary-foreground: 240 10% 3.9%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 197 100% 50%;
-    --accent-foreground: 240 10% 3.9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 322 84% 65%;
-
     --radius: 0.5rem;
 
-    /* Retro Cyber Specific Colors (defined as HSL for direct CSS use) */
-    --neon-pink: 322 84% 65%;
-    --neon-cyan: 197 100% 50%;
-    --neon-purple: 270 85% 60%;
-    --neon-green: 120 100% 50%;
-    --dark-bg: 240 10% 3.9%;
-    --darker-bg: 240 15% 2%;
-    --grid-color: 240 5% 20%;
-
     /* Gradients, Shadows, Transitions (remain as is, as they are custom properties for direct use) */
-    --gradient-cyber: linear-gradient(
-      135deg,
-      hsl(322, 84%, 65%) 0%,
-      hsl(270, 85%, 60%) 50%,
-      hsl(197, 100%, 50%) 100%
-    );
     --gradient-dark: linear-gradient(
       180deg,
       hsl(240, 15%, 2%) 0%,
@@ -80,53 +78,15 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  .dark {
-    /* Dark mode overrides for the base HSL values */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-
-    /* Sidebar dark mode overrides */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+
   body {
-    font-family: "Rajdhani", sans-serif;
-    overflow-x: hidden;
+    @apply bg-background text-foreground font-rajdhani overflow-x-hidden;
     background: var(--gradient-dark);
   }
 
@@ -146,7 +106,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--darker-bg));
+    background: var(--color-darker-bg);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -218,14 +178,6 @@
 }
 
 @layer utilities {
-  .font-orbitron {
-    font-family: "Orbitron", monospace;
-  }
-
-  .font-rajdhani {
-    font-family: "Rajdhani", sans-serif;
-  }
-
   .bg-cyber-gradient {
     background: var(--gradient-cyber);
   }
