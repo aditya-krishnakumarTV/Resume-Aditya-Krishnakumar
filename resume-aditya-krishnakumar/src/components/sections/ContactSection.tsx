@@ -6,7 +6,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-import { Phone, Mail, MapPin, Github, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Github, Linkedin, Download } from "lucide-react";
+
+import resumeFile from "../../assets/AdityaKrishnakumar_Resume.pdf";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -14,6 +16,7 @@ const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const availableRef = useRef<HTMLDivElement>(null);
+  const resumeRef = useRef<HTMLDivElement>(null);
 
   const colors = ["#cf36fd", "#e31541"];
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
@@ -22,8 +25,9 @@ const ContactSection = () => {
     const section = sectionRef.current;
     const contact = contactRef.current;
     const availability = availableRef.current;
+    const resume = resumeRef.current;
 
-    if (section && availability && contact) {
+    if (section && availability && contact && resume) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -37,12 +41,19 @@ const ContactSection = () => {
         contact,
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      ).fromTo(
-        availability,
-        { x: 100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
-        "-=0.5"
-      );
+      )
+        .fromTo(
+          resume,
+          { x: 100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+          "-=0.5"
+        )
+        .fromTo(
+          availability,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+          "-=0.5"
+        );
     }
   }, []);
 
@@ -232,10 +243,37 @@ const ContactSection = () => {
             </div>
 
             <div
-              ref={availableRef}
-              className="backdrop-blur-md bg-card/10 border border-purple-500/30 rounded-lg p-8"
+              ref={resumeRef}
+              className="backdrop-blur-md bg-card/10 border border-primary/30 rounded-lg p-8"
             >
-              <h3 className="font-orbitron text-xl font-bold text-purple-400 mb-4">
+              <h3 className="font-orbitron text-xl font-bold text-primary mb-4">
+                DOWNLOAD RESUME
+              </h3>
+              <p className="text-muted-foreground text-sm mb-6">
+                Get a copy of my resume.
+              </p>
+              <div className="flex justify-start">
+                <a href={resumeFile} download="Aditya Krishnakumar-Resume.pdf">
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "var(--shadow-neon-violet)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-8 bg-primary/20 text-primary font-rajdhani font-bold py-3 rounded-lg border border-primary flex items-center justify-center space-x-2 transition-all duration-300 hover:bg-primary/40"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>Download Now</span>
+                  </motion.button>
+                </a>
+              </div>
+            </div>
+
+            <div
+              ref={availableRef}
+              className="backdrop-blur-md bg-card/10 border border-neon-purple/30 rounded-lg p-8"
+            >
+              <h3 className="font-orbitron text-xl font-bold text-neon-purple mb-4">
                 AVAILABILITY
               </h3>
               <div className="flex items-center space-x-3 mb-4">
