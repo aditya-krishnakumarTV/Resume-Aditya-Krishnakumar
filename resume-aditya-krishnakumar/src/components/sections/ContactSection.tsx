@@ -148,7 +148,7 @@ const ContactSection = () => {
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "var(--shadow-neon)" }}
+                whileHover={{ scale: 1.05, boxShadow: "var(--shadow-violet)" }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
                 className="w-full bg-primary text-primary-foreground font-rajdhani font-bold py-3 rounded-lg border border-primary border-neon transition-cyber"
@@ -166,12 +166,12 @@ const ContactSection = () => {
               <h3 className="font-orbitron text-2xl font-bold text-accent mb-6">
                 CONTACT INFO
               </h3>
-              <div className="grid lg:grid-cols-2 space-y-6 gap-4">
+              <div className="grid lg:grid-cols-2 space-y-6 gap-2">
                 {contactInfo.map((item, index) => (
                   <motion.div
                     key={index}
-                    whileHover={{ x: 10, scale: 1.02 }}
-                    className="flex items-center space-x-4 p-4 rounded-lg bg-background/20 border border-muted/30 hover:border-accent/50 transition-cyber"
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center space-x-4 p-4 m-1 rounded-lg bg-background/20 border border-muted/30 hover:border-accent/50 transition-cyber"
                   >
                     <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
                       <item.icon className="w-6 h-6 text-accent" />

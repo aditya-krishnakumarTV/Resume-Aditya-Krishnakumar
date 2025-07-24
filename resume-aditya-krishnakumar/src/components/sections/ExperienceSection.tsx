@@ -130,7 +130,7 @@ const ExperienceSection = () => {
               <div className="space-y-3">
                 {exp.achievements.map((achievement, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0 shadow-neon"></div>
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0 shadow-violet"></div>
                     <p className="text-muted-foreground leading-relaxed">
                       {achievement}
                     </p>
@@ -146,7 +146,7 @@ const ExperienceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8"
+          className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8 scanlines"
         >
           <h3 className="font-orbitron text-3xl font-bold text-accent mb-8 text-center">
             TECHNICAL SKILLS
@@ -161,7 +161,7 @@ const ExperienceSection = () => {
                 <div className="space-y-2">
                   {skillGroup.items.map((skill, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
-                      <div className="w-1 h-1 bg-accent rounded-full"></div>
+                      <div className="w-1 h-1 bg-accent rounded-full shadow-red"></div>
                       <span className="text-muted-foreground text-sm">
                         {skill}
                       </span>

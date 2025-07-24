@@ -106,14 +106,14 @@ const AboutSection = () => {
               </p>
             </motion.div>
 
-            <motion.div className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8 hover:border-accent/60 transition-cyber relative">
+            <motion.div className="backdrop-blur-md bg-card/10 border border-accent/30 rounded-lg p-8 hover:border-accent/60 transition-cyber relative scanlines">
               <h3 className="font-orbitron text-2xl font-bold text-accent mb-6">
                 LANGUAGES
               </h3>
               <div className="space-y-3">
                 {languages.map((language, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full shadow-red"></div>
                     <span className="text-muted-foreground">{language}</span>
                   </div>
                 ))}
@@ -122,7 +122,7 @@ const AboutSection = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div className="backdrop-blur-md bg-card/10 border border-secondary/30 rounded-lg p-8 hover:border-secondary/60 transition-cyber relative">
+            <motion.div className="backdrop-blur-md bg-card/10 border border-secondary/30 rounded-lg p-8 hover:border-secondary/60 transition-cyber relative scanlines">
               <h3 className="font-orbitron text-2xl font-bold text-foreground mb-6">
                 EDUCATION
               </h3>
@@ -132,7 +132,7 @@ const AboutSection = () => {
                     key={index}
                     className="border-l-2 border-primary/50 pl-6 relative"
                   >
-                    <div className="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full shadow-neon"></div>
+                    <div className="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full shadow-violet"></div>
                     <h4 className="font-rajdhani font-bold text-lg text-primary">
                       {item.degree}
                     </h4>
@@ -144,14 +144,14 @@ const AboutSection = () => {
               </div>
             </motion.div>
 
-            <motion.div className="backdrop-blur-md bg-card/10 border border-purple-500/30 rounded-lg p-8 hover:border-purple-500/60 transition-cyber relative">
-              <h3 className="font-orbitron text-2xl font-bold text-purple-400 mb-6">
+            <motion.div className="backdrop-blur-md bg-card/10 border border-neon-purple/30 rounded-lg p-8 hover:border-neon-purple/60 transition-cyber relative scanlines">
+              <h3 className="font-orbitron text-2xl font-bold text-neon-purple mb-6">
                 CERTIFICATIONS
               </h3>
               <div className="space-y-4">
                 {certifications.map((cert, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-neon-purple rounded-full mt-2 flex-shrink-0 shadow-purple"></div>
                     <span className="text-muted-foreground">{cert}</span>
                   </div>
                 ))}

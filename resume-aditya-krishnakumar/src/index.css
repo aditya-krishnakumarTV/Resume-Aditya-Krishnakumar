@@ -66,9 +66,9 @@
     );
 
     /* Shadows */
-    --shadow-neon-violet: 0 0 30px hsla(279, 65%, 69%, 0.475);
-    --shadow-neon-red: 0 0 30px hsl(353.52, 86%, 61%, 0.4);
-    --shadow-purple: 0 0 25px hsl(270, 85%, 60%, 0.4);
+    --shadow-neon-violet: 0 0 20px hsla(279, 65%, 69%, 0.5);
+    --shadow-neon-red: 0 0 20px hsla(354, 82%, 63%, 0.611);
+    --shadow-neon-purple: 0 0 20px hsl(270, 85%, 60%, 0.5);
 
     /* Transitions */
     --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -191,16 +191,16 @@
     background: var(--gradient-dark);
   }
 
-  .shadow-neon-violet {
+  .shadow-violet {
     box-shadow: var(--shadow-neon-violet);
   }
 
-  .shadow-neon-red {
+  .shadow-red {
     box-shadow: var(--shadow-neon-red);
   }
 
   .shadow-purple {
-    box-shadow: var(--shadow-purple);
+    box-shadow: var(--shadow-neon-purple);
   }
 
   .transition-cyber {

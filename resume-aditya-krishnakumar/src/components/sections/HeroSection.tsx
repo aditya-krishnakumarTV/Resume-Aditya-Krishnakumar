@@ -70,7 +70,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
       {[...Array(20)].map((_, i) => (
         <div
           key={i}
-          className="particle absolute w-2 h-2 bg-accent rounded-full opacity-40"
+          className="particle absolute w-2 h-2 bg-accent rounded-full opacity-40 shadow-red"
           style={
             {
               left: `${Math.random() * 100}%`,
@@ -82,7 +82,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
       {[...Array(20)].map((_, i) => (
         <div
           key={i}
-          className="particle absolute w-2 h-2 bg-primary rounded-full opacity-40"
+          className="particle absolute w-2 h-2 bg-primary rounded-full opacity-40 shadow-violet"
           style={
             {
               left: `${Math.random() * 100}%`,
