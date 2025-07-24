@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/resume-Aditya-Krishnakumar/',
+  base: '/resume-aditya-krishnakumar/',
   plugins: [react(), tailwindcss()],
 })
