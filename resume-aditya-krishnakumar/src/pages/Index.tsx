@@ -59,11 +59,11 @@ const Index = () => {
           <AboutSection />
         </div>
 
-        <div id="experience">
+        <div id="experience" className="-mt-18 sm:-mt-0">
           <ExperienceSection />
         </div>
 
-        <div id="contact">
+        <div id="contact" className="-mt-18 sm:-mt-0">
           <ContactSection />
         </div>
       </main>

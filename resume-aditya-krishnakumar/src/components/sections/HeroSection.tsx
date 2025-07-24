@@ -64,7 +64,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid p-8"
     >
       {/* Background particles */}
       {[...Array(20)].map((_, i) => (
@@ -92,7 +92,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
         />
       ))}
 
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-6 grid p-4 lg:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -101,7 +101,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
         >
           <h1
             ref={titleRef}
-            className="font-orbitron text-5xl md:text-6xl text-white font-medium mb-6 glitch"
+            className="font-orbitron text-4xl md:text-6xl text-white font-medium mb-6 glitch"
             data-text="ADITYA KRISHNAKUMAR"
           >
             <span>ADITYA KRISHNAKUMAR</span>
@@ -115,12 +115,12 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
           </p>
 
           <div ref={ctaRef} className="space-y-4">
-            <p className="text-gray-200 text-lg max-w-md">
+            <p className="text-gray-200 text-lg max-w-full lg:max-w-md">
               A results-driven UI Developer with over 3 years of experience.
               Passionate about creating impactful and innovative solutions.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col lg:flex-row gap-4 mt-8">
               <motion.button
                 whileHover={{
                   scale: 1.05,
@@ -128,7 +128,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate("experience")}
-                className="px-8 py-3 bg-primary text-primary-foreground font-rajdhani font-bold rounded-lg border border-primary border-neon transition-cyber"
+                className="px-8 py-3 bg-primary text-primary-foreground font-rajdhani font-bold rounded-lg border border-primary border-neon transition-cyber w-1/2 md:w-fit self-center"
               >
                 VIEW WORK
               </motion.button>
@@ -140,7 +140,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate("contact")}
-                className="px-8 py-3 border border-accent text-accent font-rajdhani font-bold rounded-lg hover:bg-accent/10 transition-cyber"
+                className="px-8 py-3 border border-accent text-accent font-rajdhani font-bold rounded-lg hover:bg-accent/10 transition-cyber w-1/2 md:w-fit self-center"
               >
                 CONTACT ME
               </motion.button>
@@ -159,7 +159,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
             <img
               src={profileImage}
               alt="Aditya Krishnakumar"
-              className="profile-float relative z-10 w-80 h-90 object-cover rounded-full border-4 border-accent shadow-accent"
+              className="profile-float relative z-10 w-50 sm:w-80 h-60 sm:h-90 object-cover rounded-full border-4 border-accent shadow-accent"
             />
 
             {/* Decorative elements */}
@@ -173,7 +173,7 @@ const HeroSection = ({ onNavigate }: NavigationProps) => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
       >
         <div className="w-6 h-10 border-2 border-accent rounded-full flex justify-center">
           <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>

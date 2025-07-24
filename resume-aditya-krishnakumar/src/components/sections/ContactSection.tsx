@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, easeIn, easeOut, motion } from "framer-motion";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,6 +14,9 @@ const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
   const availableRef = useRef<HTMLDivElement>(null);
+
+  const colors = ["#cf36fd", "#e31541"];
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
 
   useGSAP(() => {
     const section = sectionRef.current;
@@ -75,6 +78,27 @@ const ContactSection = () => {
       href: "https://github.com/aditya-krishnakumarTV",
     },
   ];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const textVariants = {
+    // Initial state: fully visible with the current color
+    initial: { opacity: 1, color: colors[currentColorIndex] },
+    // Exit state: fades out to a dim/transparent state
+    exit: { opacity: 0, transition: { duration: 0.8, ease: easeOut } },
+    // Enter state: fades in to the new color
+    animate: {
+      opacity: 1,
+      color: colors[currentColorIndex],
+      transition: { duration: 0.8, ease: easeIn },
+    },
+  };
 
   return (
     <section ref={sectionRef} className="min-h-screen py-20 relative">
@@ -171,19 +195,20 @@ const ContactSection = () => {
                   <motion.div
                     key={index}
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-center space-x-4 p-4 m-1 rounded-lg bg-background/20 border border-muted/30 hover:border-accent/50 transition-cyber"
+                    className="flex items-center space-x-4 p-4 m-1 rounded-lg bg-background/20 border border-muted/30 hover:border-accent/50 transition-cyber
+                    max-w-full"
                   >
                     <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
                       <item.icon className="w-6 h-6 text-accent" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-rajdhani font-medium text-foreground">
+                      <p className="font-rajdhani font-medium text-foreground text-sm md:text-lg">
                         {item.label}
                       </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-muted-foreground hover:text-accent transition-cyber"
+                          className="text-muted-foreground hover:text-accent transition-cyber text-xs md:text-sm"
                           target={
                             item.href.startsWith("http") ? "_blank" : "_self"
                           }
@@ -196,7 +221,9 @@ const ContactSection = () => {
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-muted-foreground">{item.value}</p>
+                        <p className="text-muted-foreground text-sm md:text-sm">
+                          {item.value}
+                        </p>
                       )}
                     </div>
                   </motion.div>
@@ -218,8 +245,8 @@ const ContactSection = () => {
                 </span>
               </div>
               <p className="text-muted-foreground text-sm">
-                Open to freelance projects and full-time positions.
-                Let's discuss how we can work together!
+                Open to freelance projects and full-time positions. Let's
+                discuss how we can work together!
               </p>
             </div>
           </div>
@@ -233,8 +260,18 @@ const ContactSection = () => {
             className="text-muted-foreground"
           >
             © 2025 Aditya Krishnakumar. Designed with{" "}
-            <span className="text-primary">❤</span> and crafted with React +
-            GSAP
+            <AnimatePresence mode="wait">
+              <motion.span
+                className="text-primary"
+                variants={textVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                ❤{" "}
+              </motion.span>
+            </AnimatePresence>
+            and crafted with React + GSAP
           </motion.p>
         </div>
       </div>
